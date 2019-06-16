@@ -1,5 +1,7 @@
-#任意の位置にある.vscodeフォルダを無視
+#任意の位置にある以下の名前のフォルダを無視(末尾の/が重要)
 .vscode/
+.ipynb_checkpoints/
+__pycache__/
 
 #任意の位置にある*.exeを無視
 *.exe
