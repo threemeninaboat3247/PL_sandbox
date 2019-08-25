@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "C++"
+		},
+		{
+			"path": "Python"
+		},
+		{
+			"path": "Shell"
+		},
+		{
+			"path": "Vim"
+		}
+	],
+	"settings": {}
+}

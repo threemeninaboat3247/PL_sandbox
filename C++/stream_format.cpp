@@ -2,6 +2,7 @@
  * ストリームにフォーマット指定有りで書き出す方法を確かめるコード
  * How to output values to a stream with formatting
  * 結論：操作子を使う
+ * Tag: stream, format, manipulator
  */
 #include <iostream>
 #include <iomanip>

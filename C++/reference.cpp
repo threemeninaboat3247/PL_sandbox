@@ -1,4 +1,8 @@
+/**
+ * Tag: reference, move
+ */
 #include <iostream>
+
 class NoMoveClass{
 public:
     int value;

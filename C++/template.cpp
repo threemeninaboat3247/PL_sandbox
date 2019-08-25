@@ -1,6 +1,7 @@
 /*
  * コンテナをイテレーションする関数をテンプレートで
  * 書く際に注意するべきこと
+ * Tag: template, iteration, container, vector
  */
 #include <vector>
 #include <iostream>

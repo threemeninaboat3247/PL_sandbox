@@ -2,6 +2,7 @@
  * 独自に定義したクラスを<<演算子でストリームに出力する方法を確かめるためのコード
  * How to output an instance of a user-defined class to a stream by using '<<' operator
  * 結論：クラス定義外のスコープで<<演算子をオーバーロードする。プライベートメンバに直接アクセスする場合は<<演算子をfriend登録しておく
+ * Tag: class, stream, <<, operator
  */
 #include <iostream>
 #include <sstream>

@@ -1,6 +1,7 @@
 /**
  * 前段の処理の成功を前提にした処理が連続して並んでいる場合の例外の利用の有効性を確かめるためのコード
  * How to use exception in a sequential processes
+ * Tag: exception
  */
 #include <vector>
 #include <iostream>

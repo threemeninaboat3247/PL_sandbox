@@ -2,6 +2,7 @@
  * 変数宣言時の*とデータ型の位置の任意性を確かめるためのコード
  * How '*' and data type can be arranged in an idetifier declaration
  * 結論：単語間の順序を変えない限りは*を左右のどちらに寄せるかは任意なので、自分の流儀で統一して大丈夫
+ * Tag: identifier, declaration, pointer, const
  */
 #include <stdio.h>
 int static_int = 5;

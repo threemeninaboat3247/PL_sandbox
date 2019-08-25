@@ -2,6 +2,7 @@
  * 構造体のコンストラクタがどのタイミングで呼ばれるかを確かめるためのコード
  * When the default constuctor of a structure is called
  * 結論：宣言のみでOK. デフォルトコンストラクタを持つユーザ定義型は必ず初期化される。(cf. STROUSTRUP p.171)
+ * Tag: constructor, initialization
  */
 #include <string>
 #include <iostream>

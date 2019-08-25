@@ -1,5 +1,6 @@
 /*
  * コピーコンストラクタの定義
+ * Tag: constructor, copy
  */
 #include <iostream>
 

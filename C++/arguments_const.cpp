@@ -1,7 +1,8 @@
 /**
  *  ポインタ型参照の関数引数への適切なconst修飾子の付け方
- *  How to attach 'const' modifiers to a function argument which is a pointer type referrence
+ *  How to attach 'const' modifiers to a function argument which is a pointer type reference
  *  結論：find系のポインタ出力引数はconst int* &ptr_outのように定義する
+ *  Tag: pointer, reference, const, argument, function
  */
 #include <stdio.h>
 #include <vector>
