@@ -1,7 +1,7 @@
 /**
  * 定数配列の意味を確かめるためのコード
  * The meaning of "constant array"
- * 結論: 配列変数自体は元から書き換え不可能なので、consで守るべきは要素だけ
+ * 結論: 配列変数自体は元から書き換え不可能なので、constで守るべきは要素だけ
  * Tag: array, const, declaration
  */
 #include <stdio.h>
