@@ -68,3 +68,4 @@ ab #e **************************************************************************
 set clipboard=unnamed,autoselect
 "正規表現のために very magicを常に使う
 nnoremap / /\v
+inoremap <silent> jj <ESC>

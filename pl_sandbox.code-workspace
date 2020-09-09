@@ -11,7 +11,29 @@
 		},
 		{
 			"path": "Vim"
+		},
+		{
+			"path": "General"
+		},
+		{
+			"path": "JavaScript"
+		},
+		{
+			"path": "jQuery"
+		},
+		{
+			"path": "VSCode"
+		},
+		{
+			"path": ".vscode"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"*.sql": "sql",
+			"*.vue": "vue",
+			"cstdlib": "c",
+			"stdlib.h": "c"
+		}
+	}
 }

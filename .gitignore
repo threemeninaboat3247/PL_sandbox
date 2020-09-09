@@ -2,6 +2,7 @@
 .vscode/
 .ipynb_checkpoints/
 __pycache__/
+document/
 
 #任意の位置にある*.exeを無視
 *.exe
