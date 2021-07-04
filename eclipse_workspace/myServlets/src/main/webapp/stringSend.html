@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script
+  src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<title>string data sending demo (Servlet -> Javascript)</title>
+</head>
+<body>
+<h1>string data sending demo (Servlet -> Javascript)</h1>
+<label id="message">original text</label>
+<input type="button" value="ServletからStringデータを受信する" onclick="replace()">
+
+<script>
+const replace = function(){
+	$.get('StringSender', function(data) {
+		  const label = document.getElementById("message");
+		  label.innerText = data;
+	});
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 
+<script
+  src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+-->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<title>double data sending demo (Servlet -> Javascript)</title>
+</head>
+<body>
+<h1>double data sending demo (Servlet -> Javascript)</h1>
+<label id="message">empty</label>
+<input type="button" value="replace" onclick="replace()">
+
+<script>
+let count = 0;
+const replace = function(){
+	$.getJSON('GraphDraw', function(data) {
+		// 関数内ではdataは要素数2のArrayになっている
+		// documentとは？ -> ブラウザに読み込まれたwebページ全体を表す
+		// getElementByIdの返り値は？ -> Element(Document内の全ての要素の基底クラス) of null
+		// innerTextプロパティに配列を代入するとなにが起こる？(dataはArrayなのにinnerTextは文字列になっている)
+		//   -> innerTextに配列を入れて再レンダリングすると文字列に変換されると理解した(間違っている可能性有り)
+		document.getElementById("message").innerText = data;
+	});
+}
+
+</script>
+</body>
+</html>
