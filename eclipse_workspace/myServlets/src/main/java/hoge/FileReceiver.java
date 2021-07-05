@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class FileReceiver
  */
-@WebServlet("/Controller")
-public class Controller extends HttpServlet {
+@WebServlet("/FileReceiver")
+public class FileReceiver extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controller() {
+    public FileReceiver() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +33,7 @@ public class Controller extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession hs = request.getSession();
 		State state = (State)hs.getAttribute("state");
-		String btn_type = request.getParameter("btn_type");
-		switch (btn_type){
-			case "run":
-				state.setState("running");
-				break;
-			case "save":
-				state.setState("stopped");
-				break;
-			case "resume":
-				state.setState("running");
-				break;
-			case "upload":
-			  state.setState("loaded");
-			  break;
-		}
+		state.setState("loaded");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -57,6 +43,7 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	  // アップロードされたファイルの書き込み処理
 		doGet(request, response);
 	}
 

@@ -19,9 +19,16 @@ function test1(){
 <%
 if (state.getState() == "init"){
 %>
-<form method="get" action="/myServlets/Controller">
-<input type="submit" onclick=test()  value="run" name="btn_type">
+<h1>状態: init</h1>
+<form method="post" enctype="multipart/form-data" action="/myServlets/FileReceiver">
+<input type="file">
+<input type="submit" value="upload" name="btn_type">
 </form>
+<form method="get" action="/myServlets/Controller">
+<input type="submit" value="run" name="btn_type">
+</form>
+<input disabled type="submit" value="save" name="btn_type">
+<input disabled type="submit" value="resume" name="btn_type">
 <%
 }
 %>
@@ -29,28 +36,49 @@ if (state.getState() == "init"){
 <%
 if (state.getState() == "running"){
 %>
-<form method="get" action="/myServlets/Controller">
-<input type="submit" value="pause" name="btn_type">
+<h1>状態: running</h1>
+<form method="post" enctype="multipart/form-data" action="/myServlets/FileReceiver">
+<input disabled type="file">
+<input disabled type="submit" value="upload" name="btn_type">
 </form>
+<input disabled type="submit" value="run" name="btn_type">
+<form method="get" action="/myServlets/Controller">
+<input type="submit" value="save" name="btn_type">
+</form>
+<input disabled type="submit" value="resume" name="btn_type">
 <%
 }
 %>
 
 <%
-if (state.getState() == "halt"){
+if (state.getState() == "stopped"){
 %>
+<h1>状態: stopped</h1>
+<form method="post" enctype="multipart/form-data" action="/myServlets/FileReceiver">
+<input disabled type="file">
+<input disabled type="submit" value="upload" name="btn_type">
+</form>
+<input disabled type="submit" value="run" name="btn_type">
+<input disabled type="submit" value="save" name="btn_type">
+<input disabled type="submit" value="resume" name="btn_type">
+<%
+}
+%>
+
+<%
+if (state.getState() == "loaded"){
+%>
+<h1>状態: loaded</h1>
+<form method="post" enctype="multipart/form-data" action="/myServlets/FileReceiver">
+<input type="file">
+<input type="submit" value="upload" name="btn_type">
+</form>
+<form method="get" action="/myServlets/Controller">
+<input type="submit" value="run" name="btn_type">
+</form>
+<input disabled type="submit" value="save" name="btn_type">
 <form method="get" action="/myServlets/Controller">
 <input type="submit" value="resume" name="btn_type">
-</form>
-<%
-}
-%>
-
-<%
-if (state.getState() == "finish"){
-%>
-<form method="get" action="/myServlets/Controller">
-<input type="submit" value="end" name="btn_type">
 </form>
 <%
 }
