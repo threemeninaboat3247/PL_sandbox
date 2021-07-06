@@ -14,7 +14,7 @@ import basic2.MyString;
  *  ・[3] System.out.printlnのフォーマット出力を確認せよ(桁数指定、パディング、指数表記)
  *  ・[4] int-double, double-文字列間の変換を行いデータの丸めについて確認せよ
  *  ・[5] 関数に変数を渡して関数内で変数を変更した時の動作について理解せよ
- *  ・[6] コンテナ型(配列、辞書型、リスト、集合)を宣言して要素を追加せよ
+ *  ・[6] コレクション型(配列、辞書型、リスト、集合)を宣言して要素を追加せよ
  *  ・[7] 別パッケージにある自作クラスをこのファイル内でしようせよ
  * 
  * @author Yuki
@@ -78,6 +78,25 @@ public class Types {
     tryToChangeStr(mystring2);
     System.out.println("tryToChangeStr 呼び出し後のmystring2: " + mystring2.getString());
     
+    // String型の比較(String Constant Poolがあるので""で初期化した場合に限っては==で比較ができてしまう
+    // Stringがnew String("hoge")で初期化されることもあるのでequalsを使うのが正しい
+    String dquo1 = "Pool内の文字列";
+    String dquo2 = "Pool内の文字列";
+    String newString = new String("Pool内の文字列");
+    System.out.println("dquo1==dquo2:" + String.valueOf(dquo1 == dquo2));    
+    System.out.println("dquo1==newString:" + String.valueOf(dquo1 == newString));    
+    System.out.println("dquo1.equals(newString):" + dquo1.equals(newString));    
+    
+    // switch文のラベルとの比較はequalsを使って行われるので同値比較になるので安心
+    String input = new String("値の比較");
+    switch (input) {
+    case "値の比較":
+      System.out.println("文字列でswitchしても値の比較が行われる");
+      break;
+    default:
+      System.out.println("default句");
+      break;
+    }
     
     //[4]
     // 整数がた同士
