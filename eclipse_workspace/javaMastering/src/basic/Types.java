@@ -141,7 +141,9 @@ public class Types {
     System.out.println("Arrays.deepEqualsによる比較(3と4): " + Arrays.deepEquals(mystrings3, mystrings4));     
 
     // リスト Listインタフェースを実装しているのがArrayList, LinkedList
-    // ArrayList Listインタフェースを実装している。
+    // ArrayList Listインタフェースを実装している
+    // Listはインタフェースなのでnewするときは具象クラスを使う必要が有るが、Listの機能しか使わないのであれば
+    // 　List型の変数で受けるのが良い
     ArrayList<MyString> arrayList = new ArrayList<>();
     MyString hoge = new MyString("hoge");
     arrayList.add(hoge);

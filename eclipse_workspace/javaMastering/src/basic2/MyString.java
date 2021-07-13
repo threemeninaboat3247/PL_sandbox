@@ -4,7 +4,7 @@ package basic2;
  * mutableなString型
  * @author Yuki
  */
-public class MyString {
+public class MyString implements Cloneable{
   private String _mystring;
   public MyString() {
     _mystring = "デフォルト文字列";
@@ -30,6 +30,18 @@ public class MyString {
   public MyString(String str) {
     // 一見コピーしないとまずそうだが、Stringはimmutableなので_mystringの参照先が書き換えられる心配はない
     _mystring = str;
+  }
+  
+  @Override
+  public MyString clone() {
+    MyString cloned = null;
+    try {
+      cloned = (MyString)super.clone();
+      cloned._mystring = new String(this._mystring);
+    } catch (CloneNotSupportedException e) {
+      e.printStackTrace();
+    }
+    return cloned;
   }
   
   public void changeStr(String str) {
