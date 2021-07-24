@@ -92,7 +92,7 @@ var Parent = function(name) {
 };
 Parent.prototype.getName = function() {
     return this.name;
-} 
+}
 
 /* 子クラス */
 var Child = function(name) {
@@ -102,3 +102,7 @@ Child.prototype = new Parent("hoge");
 Child.prototype.only_child = "fuga";
 ```
 
+## debug手法
+- object.prototype.toString(hoge), object.prototype.toString.call(hoge)の
+
+## メモ

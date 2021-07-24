@@ -73,3 +73,5 @@ inoremap <silent> jj <ESC>
 " " タブの切り替え
 noremap <C-j> :tabnext<CR>
 noremap <C-k> :tabprevious<CR>
+set tabstop=2
+set shiftwidth=2

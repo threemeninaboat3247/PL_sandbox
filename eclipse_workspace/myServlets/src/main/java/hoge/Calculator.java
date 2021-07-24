@@ -33,11 +33,13 @@ public class Calculator extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession hs = request.getSession();
 		PrintWriter out = response.getWriter();
+		log("sleep start");
 		try {
 		  Thread.sleep(10000);
 		} catch (InterruptedException e) {
 		  e.printStackTrace();
 		}
+		log("sleep end");
 		State state = (State)hs.getAttribute("state");
 		String newState = "stopped";
 		String statement = "current state: " + state.getState() + "\nnewstate: " + newState;
