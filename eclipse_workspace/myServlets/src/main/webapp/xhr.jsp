@@ -19,10 +19,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 	  let xhr = new XMLHttpRequest();
+	  let xhr2 = new XMLHttpRequest();
 	  xhr.onreadystatechange = function() {
 		  if (xhr.readyState === 4) { //通信完了
 			  if (xhr.status === 200) { //通信成功
 				  result.textContent = xhr.responseText;
+          xhr2.open("GET", "/myServlets/StateSender", true);
+          xhr2.send(null);
 			  } else { //通信失敗
 				  result.textContent = "サーバエラーが発生しました。";
 			  }
@@ -34,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	  xhr.open("GET", "/myServlets/Calculator", true);
 	  xhr.send(null);
 
-	  let xhr2 = new XMLHttpRequest();
 	  xhr2.onreadystatechange = function() {
 		  if (xhr2.readyState === 4) { //通信完了
 			  if (xhr2.status === 200) { //通信成功
@@ -47,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		  }
 	  };
 	  
-	  xhr2.open("GET", "/myServlets/StateSender", true);
-	  xhr2.send(null);
 }, false);
 
 
