@@ -9,37 +9,34 @@
 <body>
 <a><button id="fileChooser">file chooser</button></a>
 <a ><button id="saveBtn">save</button></a>
+<button id="button">save at local</button>
 <script>
-var fileHandle;
-document.addEventListener("DOMContentLoaded", function() {
-	const fileChooser = document.getElementById("fileChooser");
-	fileChooser.addEventListener("click", setNewFileHandle); // file chooserを開くのはユーザの操作を起点とする必要がある
-	const saveBtn = document.getElementById("saveBtn");
-  saveBtn.addEventListener('click', async () => {
-      try {
-          const value = "test text";
-          const writer = await fileHandle.createWritable();
 
-          await writer.truncate(0);
-          await writer.write(value);  // writeできるのはBlob, USVString, BufferSourceのどれか
-          await writer.close();
-      } catch (err) {
-          console.error(err.message);
-      }
-  });
-	
+document.addEventListener("DOMContentLoaded", function() {
+  const button = document.getElementById("button");
+  button.addEventListener("click", async function(e) {
+    const opts = {
+      suggestedName: 'output.csv',
+      types: [{
+        description: 'csv file',
+        accept: {'text/csv': ['.csv']},
+      }],
+    };
+    let fileHandle = await showSaveFilePicker(opts);
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "/myServlets/Book1.csv", true);
+    xhr.responseType = "blob";
+    xhr.onload = async function() {
+      let blob = xhr.response;
+      const writer = await fileHandle.createWritable();
+      await writer.truncate(0);
+      await writer.write(blob);
+      await writer.close();
+    };
+    xhr.send();
+  }, false);
 });
 
-
-async function setNewFileHandle() {
-	  const opts = {
-	    types: [{
-	      description: 'Text file',
-	      accept: {'text/plain': ['.txt']},
-	    }],
-	  };
-	  fileHandle = await window.showSaveFilePicker(opts);
-}
 </script>
 </body>
 </html>
