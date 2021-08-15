@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Promiseを使った非同期処理の利点を確かめるためのコード1</title>
+</head>
+<body>
+<script>
+// 課題：二つの値X, Yを非同期で取得して両方が揃った時点で足し算を行う
+// 実装方法：従来のコールバックを用いた非同期処理
+// ポイント：
+// 1. 値を取得する関数"fetchX", "fetchY"は引数にcallback関数を持ち、値が計算できた時点でcallback関数の引数に結果を入れてcallする
+//    callback関数の中身は関知しない
+// 2. 足し算を行う関数"sum"では上記のcallback関数を定義し"fetchX", "fetchY"をcallする
+//    callback関数では引数に結果が入っている前提で必要な処理を行う
+function sum(getX, getY, callback) {
+  var x, y;
+  getX(function(result) {
+      x = result;
+      if (y !== undefined) {
+          callback(x + y);
+      }
+  });
+  getY(function(result) {
+      y = result;
+      if (x !== undefined) {
+          callback(x + y);
+      }
+  });
+}
+// 
+function fetchX(callback) {
+  callback(5);
+}
+
+function fetchY(callback) {
+  callback(3);
+}
+
+sum(fetchX, fetchY, function(result) {
+  console.log("callback method's result: " + result);
+});
+</script>
+</body>
+</html>

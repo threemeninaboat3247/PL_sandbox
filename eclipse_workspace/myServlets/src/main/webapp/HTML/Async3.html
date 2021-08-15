@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Promiseとイベントループの関係を確かめるためのコード3</title>
+</head>
+<body>
+<a href="blob.html" download><button id="button1">通常イベントハンドラ</button></a>
+<a href="blob.html" download><button id="button2">asyncイベントハンドラ</button></a>
+<script>
+// 課題：ブラウザのダウンロード機能の代わりにファイルチューザを出す
+// ポイント：async関数はpromiseを返す。async関数内でreturnした値はresolve, throwした例外はrejectされる。
+//           async関数内のawaitはawaitした結果が戻るまで後続のステップに進まない。多分中断した状態で一度call stackからフレームがポップされる。
+document.addEventListener("DOMContentLoaded", function() {
+  let btn1 = document.getElementById("button1");
+  btn1.addEventListener("click", function(e) {
+    const opts = {
+      suggestedName: 'output.csv',
+      types: [{
+        description: 'csv file',
+        accept: {'text/csv': ['.csv']},
+      }],
+    };
+    let fileHandle = showSaveFilePicker(opts);
+    console.log("calling preventDefault");
+    e.preventDefault();
+  });
+  let btn2 = document.getElementById("button2");
+  btn2.addEventListener("click", async function(e) {
+    const opts = {
+      suggestedName: 'output.csv',
+      types: [{
+        description: 'csv file',
+        accept: {'text/csv': ['.csv']},
+      }],
+    };
+    let onScript = 1;
+    let fileHandle;
+    switch(onScript) {
+    case 0:
+      fileHandle =  showSaveFilePicker(opts);
+      console.log("after showSaveFilePicker");
+      break;
+    case 1:
+      fileHandle =  await showSaveFilePicker(opts); // awaitしないと次のステップに進む
+      break;
+    case 2:
+      showSaveFilePicker(opts).then(
+        response => {
+          fileHandle = response;
+        }
+      );
+      break;
+    }
+    console.log("calling preventDefault");
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>

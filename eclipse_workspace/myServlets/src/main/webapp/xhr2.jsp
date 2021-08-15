@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!-- XMLHttpRequestを使ってformデータを送信するサンプルコードj -->
 <html>
 <head>
 <meta charset="UTF-8">
-<title>XML Http Request Demo</title>
+<title>XMLHttpRequestを使ってformデータを送信するサンプルコード</title>
 </head>
 <body>
 <label>方法１ 自分でフォームデータ形式(URLEncodeされたキーと値のペアを&で連結したもの)を送る方法</label>
@@ -29,6 +28,10 @@
 </form>
 
 <script>
+// ポイント：
+// ・方法1であればServlet側でdoPostからdoGetを呼び出し、request.getParameter("name")でform内の要素のvalueを取れる
+// ・XHRではPOSTで送るのがポイント
+// ・方法2, 3ではContent typeがmultipart/form-dataに自動的になってしまうっぽい。これだとgetParameterで取れないので面倒くさい
 // 方法1
 const btn = document.querySelector('button');
 
